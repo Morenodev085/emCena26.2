@@ -29,16 +29,7 @@ export type Piece = {
     classif?: string;
 };
 
-// Mapeamento de cores usando classes do Tailwind ou suas variáveis globais
-export const colorMap: Record<PieceType, string> = {
-  Longa: "bg-emerald-600 text-white",
-  Curta: "bg-purple-600 text-white",
-  Rua: "bg-pink-600 text-white",
-  Estudantil: "bg-amber-400 text-slate-900",
-  Rodada: "bg-stone-200 text-slate-900",
-  Atividade: "bg-stone-200 text-slate-900",
-  Encerramento: "bg-stone-200 text-slate-900",
-};
+
 
 export type Presenca = {
     nome: string;
