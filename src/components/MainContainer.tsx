@@ -6,8 +6,8 @@ interface MainContainerProps {
 
 export function Main({ children }: MainContainerProps) {
     return (
-        <div className="container mx-auto px-4 max-w-7xl w-full mt-8">
+        <main className="w-full min-h-screen">
             {children}
-        </div>
+        </main>
     );
 }

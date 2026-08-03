@@ -20,15 +20,15 @@ export function FestivalCarousel({ title, pieces }: CarouselFestivalProps) {
     }
 
     return (
-        <section className="w-full py-8">
-
-            <div className="w-full">
+        <section className="w-full py-6 px-4">
+            {/* CONTAINER COM LARGURA MÁXIMA CENTRALIZADO */}
+            <div className="max-w-7xl mx-auto w-full">
                 <Carousel
                     opts={{
                         align: "start",
                         loop: true,
                     }}
-                    className="w-full"
+                    className="w-full relative group"
                 >
                     <CarouselContent className="ml-0">
                         {piecesWithImage.map((piece) => (
@@ -37,11 +37,12 @@ export function FestivalCarousel({ title, pieces }: CarouselFestivalProps) {
                                 className="pl-0 basis-full"
                             >
                                 <div className="w-full">
-                                    <div className="w-full h-[80vh] overflow-hidden shadow-lg border-y border-[var(--petroleo)] bg-black">
+                                    {/* ALTURA CONTROLADA: 50vh no mobile e 550px fixos em telas médias/grandes */}
+                                    <div className="w-full h-[50vh] md:h-[550px] overflow-hidden rounded-2xl shadow-xl border border-[var(--petroleo)] bg-black">
                                         <img
                                             src={piece.image}
                                             alt={piece.title || "Foto do espetáculo"}
-                                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                                             loading="lazy"
                                         />
                                     </div>
@@ -50,8 +51,9 @@ export function FestivalCarousel({ title, pieces }: CarouselFestivalProps) {
                         ))}
                     </CarouselContent>
                     
-                    <CarouselPrevious className="left-4 z-10" />
-                    <CarouselNext className="right-4 z-10" />
+                    {/* Botões posicionados com respiro nas pontas */}
+                    <CarouselPrevious className="left-4 z-10 bg-black/40 hover:bg-black/70 text-white border-none" />
+                    <CarouselNext className="right-4 z-10 bg-black/40 hover:bg-black/70 text-white border-none" />
                 </Carousel>
             </div>
         </section>
