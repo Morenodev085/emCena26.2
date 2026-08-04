@@ -4,7 +4,11 @@ import { Main } from "../../components/MainContainer";
 import { ScheduleBoard } from "../../components/ScheduleBoard"; // 1. Import do novo componente
 import { pecas } from "../../data/Peices";
 import { Piece } from "../../types/peice";
-import test from "../../assets/logoFundos.png";
+import test from "../../assets/Página 9 virado.png";
+import test2 from "../../assets/Página 8.png";
+import test3 from "../../assets/logoFundos.png";
+
+
 
 export function Home() {
     const pecasHome = pecas.filter((pecas) => pecas.type?.toLowerCase() === "longa");
@@ -24,24 +28,27 @@ export function Home() {
             <FeatureSection
                 title="Niterói em Cena 2026"
                 description="O Festival Niterói em Cena é um evento cultural que celebra a diversidade artística da cidade, reunindo apresentações de teatro, dança, música e outras expressões artísticas. Com uma programação rica e variada, o festival proporciona ao público a oportunidade de vivenciar experiências culturais únicas, promovendo a valorização da arte local e o intercâmbio entre artistas e espectadores."
-                bgType="color"
-                bgValue="var(--verde-floresta)"
-                imageSrc={test}
+                bgType="image"
+                bgSize="100px"
+
+                bgValue={test}
+                imageSrc={test3}
             />
 
             {/* QUADRO DE PROGRAMAÇÃO (Todas as peças organizadas por dia) */}
-            <ScheduleBoard 
-                pieces={pecas} 
-                onSelectPiece={handleSelectPiece} 
+            <ScheduleBoard
+                pieces={pecas}
+                onSelectPiece={handleSelectPiece}
             />
 
             {/* Outra seção institucional/destaque */}
             <FeatureSection
                 title="Niterói em Cena 2026"
                 description="O Festival Niterói em Cena é um evento cultural que celebra a diversidade artística da cidade, reunindo apresentações de teatro, dança, música e outras expressões artísticas. Com uma programação rica e variada, o festival proporciona ao público a oportunidade de vivenciar experiências culturais únicas, promovendo a valorização da arte local e o intercâmbio entre artistas e espectadores."
-                bgType="color"
-                bgValue="var(--rosa-coral)"
-                imageSrc=""
+                bgType="image"
+                bgValue={test2}
+                bgRepeat="repeat"
+                bgSize="80px"
                 reverse={true}
             />
         </Main>
