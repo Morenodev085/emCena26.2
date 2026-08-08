@@ -1,6 +1,6 @@
 import { CiInstagram } from "react-icons/ci";
-import logo from "../assets/logoFundos.png";
-import linha from "../assets/Página 9 virado.png";
+import logo from "../assets/LOGO1.png";
+import linha from "../assets/BgLogoV.png";
 
 export function Footer() {
     return (
@@ -16,7 +16,7 @@ export function Footer() {
             />
 
             {/* Conteúdo do rodapé */}
-            <div className="container mx-auto px-4 max-w-7xl w-full py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="container mx-auto px-4 max-w-7xl w-full py-6 flex flex-row md:flex-row items-center justify-between gap-4">
 
                 <div className="flex items-center">
                     <a href="/" className="cursor-pointer">
@@ -24,10 +24,7 @@ export function Footer() {
                     </a>
                 </div>
 
-                {/* Copyright centralizado */}
-                <div className="text-center text-sm text-[var(--bege-claro)]">
-                    <p>&copy; 2026 Niterói em Cena. Todos os direitos reservados.</p>
-                </div>
+
 
                 {/* Instagram à direita */}
                 <div className="flex items-center">
@@ -39,8 +36,12 @@ export function Footer() {
                     >
                         <CiInstagram size={24} />
                     </a>
+                    {/* Copyright centralizado */}
                 </div>
             </div>
+                    <div className="text-center text-sm text-[var(--bege-claro)]">
+                        <p>&copy; 2026 Niterói em Cena. Todos os direitos reservados.</p>
+                    </div>
         </footer>
     );
 }

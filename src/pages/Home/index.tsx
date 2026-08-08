@@ -4,9 +4,9 @@ import { Main } from "../../components/MainContainer";
 import { ScheduleBoard } from "../../components/ScheduleBoard"; // 1. Import do novo componente
 import { pecas } from "../../data/Peices";
 import { Piece } from "../../types/peice";
-import test from "../../assets/Página 9 virado.png";
-import test2 from "../../assets/Página 8.png";
-import test3 from "../../assets/logoFundos.png";
+import test from "../../assets/BgLogoV.png";
+import test2 from "../../assets/BgLogoH.png";
+import test3 from "../../assets/LOGO1.png";
 
 
 
