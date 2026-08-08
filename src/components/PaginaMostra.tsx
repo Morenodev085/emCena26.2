@@ -30,7 +30,7 @@ function DescricaoComLerMais({ texto, limite = 200 }: { texto: string; limite?: 
 
 const mapaCategorias: Record<string, { titulo: string; tipos: (PieceType | string)[] }> = {
     pecas: {
-        titulo: "Mostra Peças (Longas)",
+        titulo: "Mostra Peças ",
         tipos: ["Longa", "Pecas", "Peça", "Peças"],
     },
     "cenas-curtas": {
