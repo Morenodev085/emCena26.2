@@ -4,7 +4,6 @@ export type PieceType =
   | 'Rua' 
   | 'Estudantil' 
   | 'Rodada' 
-  | 'Atividade' 
   | 'Encerramento';
 
 export type Piece = {

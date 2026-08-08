@@ -3,13 +3,12 @@
 :root {
   /* Suas Cores Temáticas do Festival */
   --petroleo: #06616D;
-  --marinho: #042C4D;
-  --verde-floresta: #115933;
-  --verde-musgo: #6E842C;
-  --amarelo-ouro: #EBAA18;
-  --laranja-queimado: #D67C21;
-  --rosa-coral: #E9555E;
-  --bege-claro: #F7E7CE;
+  --marinho: #15314D;
+  --verde-musgo: #03743E;
+  --amarelo-ouro: #FBB12F;
+  --laranja-queimado: #Db6830;
+  --rosa-coral: #E06064;
+  --bege-claro: #F3E5CF;
 
   /* Cores Neutras Padrão */
   --branco: #FFFFFF;
