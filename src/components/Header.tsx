@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo1 from "../assets/LOGO1.png";
 import { FaixaDecorativa } from "./FaixaDecorativa";
-import template from "../assets/BgCenasCurtas.png";
+import template from "../assets/templates.png";
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -149,7 +149,7 @@ export function Header() {
                 </div>
             )}
 
-            <FaixaDecorativa imagem={template} />
+            <FaixaDecorativa imagem={template} altura="h-16" />
         </header>
     );
 }
