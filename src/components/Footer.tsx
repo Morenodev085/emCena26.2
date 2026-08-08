@@ -1,5 +1,5 @@
 import { CiInstagram } from "react-icons/ci";
-import logo from "../assets/LOGO1.png";
+import logo from "../assets/logoFundos.png";
 import linha from "../assets/BgLogoV.png";
 
 export function Footer() {

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { DefaultLayout } from "../components/DefaultLayout" 
+import { DefaultLayout } from "../components/DefaultLayout"
 import { Home } from "../pages/Home"
 
 export function AppRoutes() {
@@ -8,11 +8,11 @@ export function AppRoutes() {
             <Routes>
                 {/* O Layout Pai que contém o Header, o Outlet e o Footer */}
                 <Route path="/" element={<DefaultLayout />}>
-                    {/* A Home vira a rota filha que aparece no meio */}
+                    {/* Página Inicial */}
                     <Route index element={<Home />} />
-                    
-                    {/* Futuramente, você pode adicionar mais páginas aqui dentro:
-                    <Route path="programacao" element={<Programacao />} /> */}
+
+                    {/* Rotas dos Botões e Menu Dropdown */}
+                    <Route path="mostra/:categoria" element={<></>} />
                 </Route>
             </Routes>
         </BrowserRouter>

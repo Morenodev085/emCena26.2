@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import logo1 from "../assets/LOGO1.png"; 
 
 // Imagens de fundo das mostras
-import bgPecas from "../assets/BGpecas.png";
-import bgCenasCurtas from "../assets/BgCenasCurtas.png";
-import bgEstudantil from "../assets/BgEstudantil.png";
-import bgRua from "../assets/BgLogoV.png";
-import bgOficina from "../assets/BgOficinas.png";
-
+import bgPecas from "@/assets/BGpecas.png";
+import bgCenasCurtas from "@/assets/BgCenasCurtas.png";
+import bgEstudantil from "@/assets/BgEstudantil.png";
+import bgRua from "@/assets/BgLogoV.png";
+import bgOficina from "@/assets/BgOficinas.png";
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
