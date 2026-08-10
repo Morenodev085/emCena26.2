@@ -6,7 +6,7 @@ import { pecas } from "../../data/Peices";
 import { Piece } from "../../types/peice";
 import test from "../../assets/BgLogoV.png";
 import test2 from "../../assets/BgLogoH.png";
-import test3 from "../../assets/LOGO1.png";
+import test3 from "../../assets/templates.png";
 
 
 
@@ -30,7 +30,8 @@ export function Home() {
                 description="O Festival Niterói em Cena é um evento cultural que celebra a diversidade artística da cidade, reunindo apresentações de teatro, dança, música e outras expressões artísticas. Com uma programação rica e variada, o festival proporciona ao público a oportunidade de vivenciar experiências culturais únicas, promovendo a valorização da arte local e o intercâmbio entre artistas e espectadores."
                 bgType="image"
                 bgSize="100px"
-
+                cardBgColor="bg-[var(--bege-claro)]"
+                textColor="text-[var(--marinho)]"
                 bgValue={test}
                 imageSrc={test3}
             />
