@@ -4,7 +4,7 @@ import { Main } from "../../components/MainContainer";
 import { ScheduleBoard } from "../../components/ScheduleBoard"; // 1. Import do novo componente
 import { pecas } from "../../data/Peices";
 import { Piece } from "../../types/peice";
-import test from "../../assets/BgLogoV.png";
+import test from "../../assets/templates.png";
 import test2 from "../../assets/BgLogoH.png";
 import test3 from "../../assets/templates.png";
 
@@ -29,7 +29,7 @@ export function Home() {
                 title="Niterói em Cena 2026"
                 description="O Festival Niterói em Cena é um evento cultural que celebra a diversidade artística da cidade, reunindo apresentações de teatro, dança, música e outras expressões artísticas. Com uma programação rica e variada, o festival proporciona ao público a oportunidade de vivenciar experiências culturais únicas, promovendo a valorização da arte local e o intercâmbio entre artistas e espectadores."
                 bgType="image"
-                bgSize="100px"
+                bgSize="512px"
                 cardBgColor="bg-[var(--bege-claro)]"
                 textColor="text-[var(--marinho)]"
                 bgValue={test}

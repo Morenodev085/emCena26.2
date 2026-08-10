@@ -20,9 +20,8 @@ export function FestivalCarousel({ title, pieces }: CarouselFestivalProps) {
     }
 
     return (
-        <section className="w-full py-6 px-4">
-            {/* CONTAINER COM LARGURA MÁXIMA CENTRALIZADO */}
-            <div className="max-w-7xl mx-auto w-full">
+        <section className="w-full py-1 md:py-4 px-0 md:px-4">
+            <div className="w-full md:w-[90%] mx-auto">
                 <Carousel
                     opts={{
                         align: "start",
@@ -37,23 +36,36 @@ export function FestivalCarousel({ title, pieces }: CarouselFestivalProps) {
                                 className="pl-0 basis-full"
                             >
                                 <div className="w-full">
-                                    {/* ALTURA CONTROLADA: 50vh no mobile e 550px fixos em telas médias/grandes */}
-                                    <div className="w-full h-[50vh] md:h-[550px] overflow-hidden rounded-2xl shadow-xl border border-[var(--petroleo)] bg-black">
+                                    {/* Altura mobile reduzida de 75vh para 60vh para diminuir o teto/chão vazios */}
+                                    <div className="relative w-full h-[60vh] md:h-[650px] overflow-hidden rounded-none md:rounded-lg shadow-md bg-black flex items-center justify-center">
+                                        
+                                        {/* Fundo Desfocado: Opacidade e escala reduzidas para não gritar na tela */}
+                                        <img
+                                            src={piece.image}
+                                            alt=""
+                                            aria-hidden="true"
+                                            className="absolute inset-0 w-full h-full object-cover blur-2xl scale-105 opacity-30 pointer-events-none"
+                                        />
+
+                                        {/* Overlay Escuro: Aumentado para bg-black/60 para apagar mais o fundo */}
+                                        <div className="absolute inset-0 bg-black/60" />
+
+                                        {/* Imagem Principal */}
                                         <img
                                             src={piece.image}
                                             alt={piece.title || "Foto do espetáculo"}
-                                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                                            className="relative z-10 max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-[1.01]"
                                             loading="lazy"
                                         />
+
                                     </div>
                                 </div>
                             </CarouselItem>
                         ))}
                     </CarouselContent>
                     
-                    {/* Botões posicionados com respiro nas pontas */}
-                    <CarouselPrevious className="left-4 z-10 bg-black/40 hover:bg-black/70 text-white border-none" />
-                    <CarouselNext className="right-4 z-10 bg-black/40 hover:bg-black/70 text-white border-none" />
+                    <CarouselPrevious className="left-3 z-20 bg-black/50 hover:bg-black/80 text-white border-none w-8 h-8 md:w-10 md:h-10" />
+                    <CarouselNext className="right-3 z-20 bg-black/50 hover:bg-black/80 text-white border-none w-8 h-8 md:w-10 md:h-10" />
                 </Carousel>
             </div>
         </section>
