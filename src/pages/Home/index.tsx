@@ -6,7 +6,7 @@ import { pecas } from "../../data/Peices";
 import { Piece } from "../../types/peice";
 import test from "../../assets/templates.png";
 import test2 from "../../assets/BgLogoH.png";
-import test3 from "../../assets/templates.png";
+import test3 from "../../assets/coisos.png";
 
 
 
@@ -34,6 +34,9 @@ export function Home() {
                 textColor="text-[var(--marinho)]"
                 bgValue={test}
                 imageSrc={test3}
+                hasImageShadow={false}
+                hasImageBorder={false}
+                showButton={false}
             />
 
             {/* QUADRO DE PROGRAMAÇÃO (Todas as peças organizadas por dia) */}

@@ -5,9 +5,19 @@ interface FeatureSectionProps {
     title: string;
     description: string;
     imageSrc?: string;
-    buttonText?: string;
+    showImage?: boolean;
+    
+    /* BOTÃO OPCIONAL */
+    buttonText?: string; // Se não for passado ou for string vazia, o botão não aparece
+    showButton?: boolean; // Permite forçar o ocultamento mesmo se houver texto
     onButtonClick?: () => void;
+    
     reverse?: boolean;
+
+    /* SOMBRAS E BORDAS OPCIONAIS */
+    hasImageShadow?: boolean;
+    hasImageBorder?: boolean;
+    hasButtonShadow?: boolean;
 
     /* OPÇÕES DE BACKGROUND DA SEÇÃO */
     bgType?: "image" | "color" | "gradient";
@@ -25,9 +35,14 @@ export function FeatureSection({
     title,
     description,
     imageSrc,
-    buttonText = "Saiba mais",
+    showImage = true,
+    buttonText,
+    showButton = true,
     onButtonClick,
     reverse = false,
+    hasImageShadow = true,
+    hasImageBorder = true,
+    hasButtonShadow = true,
     bgType = "color",
     bgValue = "var(--petroleo)",
     bgRepeat = "repeat",
@@ -56,7 +71,10 @@ export function FeatureSection({
         cardBgColor.startsWith("rgb") ||
         cardBgColor.startsWith("var");
 
-    const hasImage = typeof imageSrc === "string" && imageSrc.trim() !== "";
+    const hasImage = showImage && typeof imageSrc === "string" && imageSrc.trim() !== "";
+    
+    // Condicional única e limpa para o botão
+    const shouldRenderButton = showButton && typeof buttonText === "string" && buttonText.trim() !== "";
 
     return (
         <section
@@ -70,20 +88,17 @@ export function FeatureSection({
             )}
 
             <div className="relative z-10 max-w-7xl mx-auto flex justify-center">
-                {/* CONTAINER CARD PRINCIPAL */}
                 <div
                     className={`w-full max-w-5xl flex flex-col md:flex-row items-center gap-8 p-6 md:p-10 rounded-2xl shadow-2xl backdrop-blur-sm
                     ${!isCustomStyleColor ? cardBgColor : ""} 
                     ${reverse && hasImage ? "md:flex-row-reverse" : ""}`}
                     style={isCustomStyleColor ? { backgroundColor: cardBgColor } : {}}
                 >
-                    {/* LADO ESQUERDO: TEXTO E BOTÃO */}
+                    {/* TEXTO E BOTÃO */}
                     <div
                         className={`w-full ${
-                            hasImage ? "md:w-3/5" : "w-full text-center"
-                        } flex flex-col items-center ${
-                            hasImage ? "md:items-start md:text-left" : "items-center"
-                        } gap-6`}
+                            hasImage ? "md:w-3/5 md:items-start md:text-left" : "w-full text-center items-center"
+                        } flex flex-col items-center gap-6`}
                     >
                         <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-gray-900">
                             {title}
@@ -93,21 +108,27 @@ export function FeatureSection({
                             {description}
                         </p>
 
-                        <Button
-                            onClick={onButtonClick}
-                            className="bg-[var(--petroleo)] hover:opacity-90 text-white font-medium px-8 py-6 text-base rounded-md shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95"
-                        >
-                            {buttonText}
-                        </Button>
+                        {/* Renderização unificada */}
+                        {shouldRenderButton && (
+                            <Button
+                                onClick={onButtonClick}
+                                className={`bg-[var(--petroleo)] hover:opacity-90 text-white font-medium px-8 py-6 text-base rounded-md transition-all cursor-pointer hover:scale-105 active:scale-95 
+                                    ${hasButtonShadow ? "shadow-md" : "shadow-none"}`}
+                            >
+                                {buttonText}
+                            </Button>
+                        )}
                     </div>
 
-                    {/* LADO DIREITO: IMAGEM/BANNER */}
+                    {/* IMAGEM */}
                     {hasImage && (
                         <div className="w-full md:w-2/5 flex justify-center items-center">
                             <img
                                 src={imageSrc}
                                 alt={title}
-                                className="w-full max-h-80 object-cover rounded-xl shadow-md border border-black/10"
+                                className={`w-full max-h-80 object-cover rounded-xl 
+                                    ${hasImageShadow ? "shadow-md" : "shadow-none"} 
+                                    ${hasImageBorder ? "border border-black/10" : "border-none"}`}
                             />
                         </div>
                     )}
