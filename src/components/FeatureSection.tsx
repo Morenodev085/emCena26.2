@@ -8,8 +8,8 @@ interface FeatureSectionProps {
     showImage?: boolean;
     
     /* BOTÃO OPCIONAL */
-    buttonText?: string; // Se não for passado ou for string vazia, o botão não aparece
-    showButton?: boolean; // Permite forçar o ocultamento mesmo se houver texto
+    buttonText?: string;
+    showButton?: boolean;
     onButtonClick?: () => void;
     
     reverse?: boolean;
@@ -73,12 +73,11 @@ export function FeatureSection({
 
     const hasImage = showImage && typeof imageSrc === "string" && imageSrc.trim() !== "";
     
-    // Condicional única e limpa para o botão
     const shouldRenderButton = showButton && typeof buttonText === "string" && buttonText.trim() !== "";
 
     return (
         <section
-            className={`relative py-12 md:py-20 px-4 md:px-8 bg-center overflow-hidden transition-all
+            className={`relative py-8 md:py-20 px-4 md:px-8 bg-center overflow-hidden transition-all
                 ${bgType === "gradient" ? bgValue : ""} 
                 ${textColor}`}
             style={getBackgroundStyle()}
@@ -89,7 +88,7 @@ export function FeatureSection({
 
             <div className="relative z-10 max-w-7xl mx-auto flex justify-center">
                 <div
-                    className={`w-full max-w-5xl flex flex-col md:flex-row items-center gap-8 p-6 md:p-10 rounded-2xl shadow-2xl backdrop-blur-sm
+                    className={`w-full max-w-5xl flex flex-col md:flex-row items-center gap-6 md:gap-8 p-6 md:p-10 rounded-2xl shadow-2xl backdrop-blur-sm
                     ${!isCustomStyleColor ? cardBgColor : ""} 
                     ${reverse && hasImage ? "md:flex-row-reverse" : ""}`}
                     style={isCustomStyleColor ? { backgroundColor: cardBgColor } : {}}
@@ -108,7 +107,6 @@ export function FeatureSection({
                             {description}
                         </p>
 
-                        {/* Renderização unificada */}
                         {shouldRenderButton && (
                             <Button
                                 onClick={onButtonClick}
@@ -120,13 +118,13 @@ export function FeatureSection({
                         )}
                     </div>
 
-                    {/* IMAGEM */}
+                    {/* IMAGEM COM ENCAIXE INTELIGENTE NO MOBILE */}
                     {hasImage && (
                         <div className="w-full md:w-2/5 flex justify-center items-center">
                             <img
                                 src={imageSrc}
                                 alt={title}
-                                className={`w-full max-h-80 object-cover rounded-xl 
+                                className={`w-full h-auto max-h-64 md:max-h-80 object-contain md:object-cover rounded-xl 
                                     ${hasImageShadow ? "shadow-md" : "shadow-none"} 
                                     ${hasImageBorder ? "border border-black/10" : "border-none"}`}
                             />
