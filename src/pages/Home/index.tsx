@@ -40,10 +40,12 @@ export function Home() {
             />
 
             {/* QUADRO DE PROGRAMAÇÃO (Todas as peças organizadas por dia) */}
-            <ScheduleBoard
-                pieces={pecas}
-                onSelectPiece={handleSelectPiece}
-            />
+            <section id="programacao" className="w-full scroll-mt-6">
+                <ScheduleBoard
+                    pieces={pecas}
+                    onSelectPiece={handleSelectPiece}
+                />
+            </section>
 
             {/* Outra seção institucional/destaque */}
             <FeatureSection

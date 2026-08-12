@@ -8,12 +8,12 @@ export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [mostrasDropdown, setMostrasDropdown] = useState(false);
 
-    // Rotas apontando para a página raiz de programação com os filtros de mostra
+    // Adicionamos a propriedade 'bgClass' com a cor de cada item
     const mostrasList = [
-        { title: "Mostra peças", href: "/programacao?mostra=pecas", bgClass: "bg-[var(--marinho)]" },
-        { title: "Mostra cenas curtas", href: "/programacao?mostra=curta", bgClass: "bg-[var(--rosa-coral)]" },
-        { title: "Mostra estudantil", href: "/programacao?mostra=estudantil", bgClass: "bg-[var(--laranja-queimado)]" },
-        { title: "Mostra rua", href: "/programacao?mostra=rua", bgClass: "bg-[var(--verde-musgo)]" },
+        { title: "Mostra peças", href: "/mostra/pecas", bgClass: "bg-[var(--marinho)]" },
+        { title: "Mostra cenas curtas", href: "/mostra/cenas-curtas", bgClass: "bg-[var(--rosa-coral)]" },
+        { title: "Mostra estudantil", href: "/mostra/estudantil", bgClass: "bg-[var(--laranja-queimado)]" },
+        { title: "Mostra rua", href: "/mostra/rua", bgClass: "bg-[var(--verde-musgo)]" },
     ];
 
     return (
@@ -31,7 +31,7 @@ export function Header() {
                 <nav className="hidden md:block w-auto">
                     <ul className="flex flex-row items-center gap-4">
                         <li>
-                            <Link to="/programacao" className="px-8 py-4 bg-[var(--rosa-coral)] text-white font-medium inline-block text-center shadow-md hover:opacity-90 transition-opacity">
+                            <Link to="/Programacao" className="px-8 py-4 bg-[var(--rosa-coral)] text-white font-medium inline-block text-center shadow-md hover:opacity-90 transition-opacity">
                                 Programação
                             </Link>
                         </li>
@@ -51,7 +51,7 @@ export function Header() {
                                 </svg>
                             </button>
 
-                            {/* Submenu Desktop */}
+                            {/* Submenu Desktop com Cores Diferentes */}
                             {mostrasDropdown && (
                                 <ul className="absolute top-full left-0 w-64 shadow-xl border-t border-white/10 flex flex-col z-50 overflow-hidden py-1 bg-[var(--petroleo)] gap-1">
                                     {mostrasList.map((item) => (
@@ -66,13 +66,14 @@ export function Header() {
                                     ))}
                                 </ul>
                             )}
+                            
                         </li>
 
-                        {/* <li>
-                            <Link to="/roda-de-negocios" className="px-8 py-4 bg-[var(--amarelo-ouro)] text-white font-medium inline-block text-center shadow-md hover:opacity-90 transition-opacity">
+                        <li>
+                            <Link to="/RodaDeNegocios" className="px-8 py-4 bg-[var(--amarelo-ouro)] text-white font-medium inline-block text-center shadow-md hover:opacity-90 transition-opacity">
                                 Roda de negócios
                             </Link>
-                        </li> */}
+                        </li>
                     </ul>
                 </nav>
 
@@ -98,7 +99,7 @@ export function Header() {
                     <ul className="flex flex-col gap-3">
                         <li>
                             <Link 
-                                to="/programacao" 
+                                to="/Programacao" 
                                 onClick={() => setIsOpen(false)} 
                                 className="block w-full py-4 bg-[var(--rosa-coral)] text-white font-medium text-center shadow-md rounded-md hover:opacity-90 transition-opacity"
                             >
@@ -117,7 +118,7 @@ export function Header() {
                                 </svg>
                             </button>
 
-                            {/* Submenu Mobile */}
+                            {/* Submenu Mobile com Cores Diferentes */}
                             {mostrasDropdown && (
                                 <ul className="flex flex-col gap-2 pt-1 pl-2">
                                     {mostrasList.map((item) => (
@@ -135,15 +136,15 @@ export function Header() {
                             )}
                         </li>
 
-                        {/* <li>
+                        <li>
                             <Link 
-                                to="/roda-de-negocios" 
+                                to="/RodaDeNegocios" 
                                 onClick={() => setIsOpen(false)} 
                                 className="block w-full py-4 bg-[var(--amarelo-ouro)] text-white font-medium text-center shadow-md rounded-md hover:opacity-90 transition-opacity"
                             >
                                 Roda de negócios
                             </Link>
-                        </li> */}
+                        </li>
                     </ul>
                 </div>
             )}
