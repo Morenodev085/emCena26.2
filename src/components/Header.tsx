@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 import logo1 from "../assets/LOGO1.png";
 import { FaixaDecorativa } from "./FaixaDecorativa";
 import template from "../assets/templates.png";
@@ -8,7 +9,6 @@ export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [mostrasDropdown, setMostrasDropdown] = useState(false);
 
-    // Adicionamos a propriedade 'bgClass' com a cor de cada item
     const mostrasList = [
         { title: "Mostra peças", href: "/mostra/pecas", bgClass: "bg-[var(--marinho)]" },
         { title: "Mostra cenas curtas", href: "/mostra/cenas-curtas", bgClass: "bg-[var(--rosa-coral)]" },
@@ -31,9 +31,14 @@ export function Header() {
                 <nav className="hidden md:block w-auto">
                     <ul className="flex flex-row items-center gap-4">
                         <li>
-                            <Link to="/Programacao" className="px-8 py-4 bg-[var(--rosa-coral)] text-white font-medium inline-block text-center shadow-md hover:opacity-90 transition-opacity">
+                            {/* Usa o NavHashLink com a propriedade smooth */}
+                            <NavHashLink 
+                                smooth 
+                                to="/#Programacao" 
+                                className="px-8 py-4 bg-[var(--rosa-coral)] text-white font-medium inline-block text-center shadow-md hover:opacity-90 transition-opacity"
+                            >
                                 Programação
-                            </Link>
+                            </NavHashLink>
                         </li>
 
                         {/* Dropdown Mostras (Desktop) */}
@@ -43,6 +48,7 @@ export function Header() {
                             onMouseLeave={() => setMostrasDropdown(false)}
                         >
                             <button
+                                type="button"
                                 className="px-8 py-4 bg-[var(--verde-musgo)] text-white font-medium flex items-center gap-2 shadow-md hover:opacity-90 transition-opacity cursor-pointer"
                             >
                                 Mostras
@@ -51,7 +57,7 @@ export function Header() {
                                 </svg>
                             </button>
 
-                            {/* Submenu Desktop com Cores Diferentes */}
+                            {/* Submenu Desktop */}
                             {mostrasDropdown && (
                                 <ul className="absolute top-full left-0 w-64 shadow-xl border-t border-white/10 flex flex-col z-50 overflow-hidden py-1 bg-[var(--petroleo)] gap-1">
                                     {mostrasList.map((item) => (
@@ -66,7 +72,6 @@ export function Header() {
                                     ))}
                                 </ul>
                             )}
-                            
                         </li>
 
                         <li>
@@ -79,6 +84,7 @@ export function Header() {
 
                 {/* Botão Hambúrguer Mobile */}
                 <button
+                    type="button"
                     onClick={() => setIsOpen(!isOpen)}
                     className="md:hidden text-white focus:outline-none p-2 w-10 h-10 flex items-center justify-center rounded-md bg-white/10"
                     aria-label="Alternar Menu"
@@ -98,17 +104,19 @@ export function Header() {
                 <div className="md:hidden absolute top-full left-0 w-full bg-[var(--petroleo)] shadow-2xl border-t border-white/10 px-6 py-6 z-[90]">
                     <ul className="flex flex-col gap-3">
                         <li>
-                            <Link 
-                                to="/Programacao" 
+                            <NavHashLink 
+                                smooth
+                                to="/#Programacao" 
                                 onClick={() => setIsOpen(false)} 
                                 className="block w-full py-4 bg-[var(--rosa-coral)] text-white font-medium text-center shadow-md rounded-md hover:opacity-90 transition-opacity"
                             >
                                 Programação
-                            </Link>
+                            </NavHashLink>
                         </li>
 
                         <li className="flex flex-col gap-2">
                             <button
+                                type="button"
                                 onClick={() => setMostrasDropdown(!mostrasDropdown)}
                                 className="w-full py-4 bg-[var(--verde-musgo)] text-white font-medium flex items-center justify-center gap-2 shadow-md rounded-md cursor-pointer hover:opacity-90 transition-opacity"
                             >
@@ -118,7 +126,7 @@ export function Header() {
                                 </svg>
                             </button>
 
-                            {/* Submenu Mobile com Cores Diferentes */}
+                            {/* Submenu Mobile */}
                             {mostrasDropdown && (
                                 <ul className="flex flex-col gap-2 pt-1 pl-2">
                                     {mostrasList.map((item) => (
