@@ -120,15 +120,15 @@ export function PaginaMostra() {
                                                 </span>
                                             )}
                                         </div>
-                                        <div className="flex flex-wrap items-center gap-2">
+                                        <div className="flex flex-wrap items-center gap-2 text-lg">
                                             <Badge
                                                 variant="outline"
-                                                className="text-[var(--amarelo-ouro)] border-[var(--amarelo-ouro)] text-sm py-1 px-3"
+                                                className="text-[var(--amarelo-ouro)] border-[var(--amarelo-ouro)] text-lg py-1 px-3"
                                             >
                                                 {item.data} - {item.time}h
                                             </Badge>
-                                            <Badge className="bg-[var(--verde-floresta)] text-white text-sm py-1 px-3">
-                                                {item.local}
+                                            <Badge className="bg-[var(--verde-floresta)] text-white text-lg py-1 px-3">
+                                                Local: {item.local}
                                             </Badge>
                                         </div>
                                     </div>
