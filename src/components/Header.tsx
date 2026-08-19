@@ -1,86 +1,39 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
-import logo1 from "../assets/LOGO1.png";
-import { FaixaDecorativa } from "./FaixaDecorativa";
+import logo1 from "../assets/Página 6.png";
 import template from "../assets/templates.png";
+import fundo1 from "../assets/fundoTeste4.png"; // Nome simplificado
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [mostrasDropdown, setMostrasDropdown] = useState(false);
 
     const mostrasList = [
-        { title: "Mostra peças", href: "/mostra/pecas", bgClass: "bg-[var(--marinho)]" },
-        { title: "Mostra cenas curtas", href: "/mostra/cenas-curtas", bgClass: "bg-[var(--rosa-coral)]" },
-        { title: "Mostra estudantil", href: "/mostra/estudantil", bgClass: "bg-[var(--laranja-queimado)]" },
-        { title: "Mostra rua", href: "/mostra/rua", bgClass: "bg-[var(--verde-musgo)]" },
+        { title: "MOSTRA PEÇAS", href: "/mostra/pecas", bgClass: "bg-[var(--marinho)]" },
+        { title: "MOSTRA CENAS CURTAS", href: "/mostra/cenas-curtas", bgClass: "bg-[var(--rosa-coral)]" },
+        { title: "MOSTRA ESTUDANTIL", href: "/mostra/estudantil", bgClass: "bg-[var(--laranja-queimado)]" },
+        { title: "MOSTRA RUA", href: "/mostra/rua", bgClass: "bg-[var(--verde-musgo)]" },
     ];
 
     return (
-        <header className="w-full bg-[var(--petroleo)] shadow-lg relative z-[100]">
+        <header
+            className="w-full bg-cover bg-center bg-no-repeat shadow-lg relative z-[100]"
+            style={{ backgroundImage: `url('${fundo1}')` }}
+        >
             <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-6 px-8 py-6">
 
                 {/* Logo */}
                 <div className="flex items-center justify-start my-4">
                     <Link to="/">
-                        <img src={logo1} alt="Logo do Festival" className="w-[260px] md:w-[300px] h-auto object-contain block" />
+                        <img
+                            src={logo1}
+                            alt="Logo do Festival"
+                            className="w-[110px] sm:w-[180px] md:w-[240px] h-auto object-contain block transition-all"
+                        />
                     </Link>
                 </div>
 
-                {/* Menu Desktop */}
-                <nav className="hidden md:block w-auto">
-                    <ul className="flex flex-row items-center gap-4">
-                        <li>
-                            {/* Usa o NavHashLink com a propriedade smooth */}
-                            <NavHashLink 
-                                smooth 
-                                to="/#Programacao" 
-                                className="px-8 py-4 bg-[var(--rosa-coral)] text-white font-medium inline-block text-center shadow-md hover:opacity-90 transition-opacity"
-                            >
-                                Programação
-                            </NavHashLink>
-                        </li>
-
-                        {/* Dropdown Mostras (Desktop) */}
-                        <li
-                            className="relative"
-                            onMouseEnter={() => setMostrasDropdown(true)}
-                            onMouseLeave={() => setMostrasDropdown(false)}
-                        >
-                            <button
-                                type="button"
-                                className="px-8 py-4 bg-[var(--verde-musgo)] text-white font-medium flex items-center gap-2 shadow-md hover:opacity-90 transition-opacity cursor-pointer"
-                            >
-                                Mostras
-                                <svg className={`w-4 h-4 transition-transform duration-200 ${mostrasDropdown ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </button>
-
-                            {/* Submenu Desktop */}
-                            {mostrasDropdown && (
-                                <ul className="absolute top-full left-0 w-64 shadow-xl border-t border-white/10 flex flex-col z-50 overflow-hidden py-1 bg-[var(--petroleo)] gap-1">
-                                    {mostrasList.map((item) => (
-                                        <li key={item.title}>
-                                            <Link
-                                                to={item.href}
-                                                className={`block px-6 py-3 text-white font-medium transition-colors ${item.bgClass}`}
-                                            >
-                                                {item.title}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </li>
-
-                        <li>
-                            <Link to="/RodaDeNegocios" className="px-8 py-4 bg-[var(--amarelo-ouro)] text-white font-medium inline-block text-center shadow-md hover:opacity-90 transition-opacity">
-                                Roda de negócios
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
 
                 {/* Botão Hambúrguer Mobile */}
                 <button
@@ -104,13 +57,13 @@ export function Header() {
                 <div className="md:hidden absolute top-full left-0 w-full bg-[var(--petroleo)] shadow-2xl border-t border-white/10 px-6 py-6 z-[90]">
                     <ul className="flex flex-col gap-3">
                         <li>
-                            <NavHashLink 
+                            <NavHashLink
                                 smooth
-                                to="/#Programacao" 
-                                onClick={() => setIsOpen(false)} 
+                                to="/#Programacao"
+                                onClick={() => setIsOpen(false)}
                                 className="block w-full py-4 bg-[var(--rosa-coral)] text-white font-medium text-center shadow-md rounded-md hover:opacity-90 transition-opacity"
                             >
-                                Programação
+                                PROGRAMAÇÃO
                             </NavHashLink>
                         </li>
 
@@ -145,19 +98,19 @@ export function Header() {
                         </li>
 
                         <li>
-                            <Link 
-                                to="/RodaDeNegocios" 
-                                onClick={() => setIsOpen(false)} 
+                            <Link
+                                to="/RodaDeNegocios"
+                                onClick={() => setIsOpen(false)}
                                 className="block w-full py-4 bg-[var(--amarelo-ouro)] text-white font-medium text-center shadow-md rounded-md hover:opacity-90 transition-opacity"
                             >
-                                Roda de negócios
+                                RODADA DE NEGÓCIOS
                             </Link>
                         </li>
                     </ul>
                 </div>
             )}
 
-            <FaixaDecorativa imagem={template} altura="h-16" />
+
         </header>
     );
 }
