@@ -21,7 +21,7 @@ export function Header() {
             className="w-full bg-cover bg-center bg-no-repeat shadow-lg relative z-[100]"
             style={{ backgroundImage: `url('${fundo1}')` }}
         >
-            <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-6 px-4 py-6">
+            <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-6 px-2 py-6">
 
                 {/* Logo */}
                 <div className="flex items-center justify-start my-4">
