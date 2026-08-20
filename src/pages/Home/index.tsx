@@ -7,6 +7,7 @@ import { Piece } from "../../types/peice";
 import test from "../../assets/templates.png";
 import test2 from "../../assets/BgLogoH.png";
 import test3 from "../../assets/coisos.png";
+import { NavigationSection } from "../../components/NavigationSection";
 
 
 
@@ -23,6 +24,7 @@ export function Home() {
         <Main>
             {/* Carousel em destaque */}
             <FestivalCarousel title="Peças em Destaque" pieces={pecasHome} />
+            <NavigationSection />
 
             {/* Seção Sobre o Festival */}
             <FeatureSection

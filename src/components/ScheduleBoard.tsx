@@ -4,6 +4,8 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Clock, MapPin, Building2, Calendar as CalendarIcon, Filter, ChevronDown, ChevronUp, X } from "lucide-react";
 import { Piece } from "../types/peice";
+import template from "../assets/Cópia de Apresentacao_Niteroi_em_Cena_Mockups.pptx (1).png";
+
 
 interface ScheduleBoardProps {
     pieces: Piece[];
@@ -60,7 +62,9 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
     if (dates.length === 0) return null;
 
     return (
-        <section className="w-full py-12 px-4 bg-[var(--marinho)] text-white">
+        <section className="w-full py-12 px-4 text-white"
+        style={{ backgroundImage: `url('${template}')` }}
+        >
             <div className="max-w-7xl mx-auto w-full">
                 
                 {/* Cabeçalho */}
