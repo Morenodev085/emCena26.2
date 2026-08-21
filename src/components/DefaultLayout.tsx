@@ -8,7 +8,7 @@ export function DefaultLayout() {
             <Header />
 
             {/* Adicionado pt-8 aqui para criar o espaço entre o header e o conteúdo de baixo */}
-            <div className="flex-1 flex flex-col pt-8">
+            <div >
                 <Outlet />
             </div>
 

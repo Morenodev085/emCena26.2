@@ -6,7 +6,7 @@ import fundo1 from "../assets/fundoTeste4.png";
 export function Header() {
     return (
         <header
-            className="w-full bg-cover bg-center bg-no-repeat shadow-lg relative z-[50]"
+            className="w-full bg-cover bg-center bg-no-repeat shadow-lg relative z-[50] -mt-1"
             style={{ backgroundImage: `url('${fundo1}')` }}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-6">

@@ -11,7 +11,6 @@ export function Pecas() {
     
     return (
         <Main>
-            <FestivalCarousel title="Peças em Destaque" pieces={pecasHome} />
 
             <PaginaMostra />
         </Main>

@@ -5,12 +5,12 @@ import template from "../assets/Cópia de Apresentacao_Niteroi_em_Cena_Mockups.p
 
 export function NavigationSection() {
     const navItems = [
-        { title: "PROGRAMAÇÃO", href: "/#Programacao", bgClass: "bg-[var(--rosa-coral)]", isHashLink: true },
         { title: "MOSTRA PEÇAS", href: "/mostra/pecas", bgClass: "bg-[var(--marinho)]" },
+        { title: "MOSTRA RUA", href: "/mostra/rua", bgClass: "bg-[var(--verde-musgo)]" },
         { title: "MOSTRA CENAS CURTAS", href: "/mostra/cenas-curtas", bgClass: "bg-[var(--rosa-coral)]" },
         { title: "MOSTRA ESTUDANTIL", href: "/mostra/estudantil", bgClass: "bg-[var(--laranja-queimado)]" },
-        { title: "MOSTRA RUA", href: "/mostra/rua", bgClass: "bg-[var(--verde-musgo)]" },
         { title: "RODADA DE NEGÓCIOS", href: "/RodaDeNegocios", bgClass: "bg-[var(--amarelo-ouro)]" },
+        { title: "AGENDA", href: "/#Programacao", bgClass: "bg-[var(--rosa-coral)]", isHashLink: true },
     ];
 
     const sectionStyle = {
