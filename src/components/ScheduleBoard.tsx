@@ -3,9 +3,30 @@ import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Clock, MapPin, Building2, Calendar as CalendarIcon, Filter, ChevronDown, ChevronUp, X } from "lucide-react";
-import { Piece } from "../types/peice";
+import { Piece, PieceType } from "../types/peice";
 import template from "../assets/Cópia de Apresentacao_Niteroi_em_Cena_Mockups.pptx (1).png";
 
+// Dicionário com os tipos exatos do tipo PieceType
+const TYPE_LABELS: Record<PieceType, string> = {
+    Longa: "MOSTRA PEÇAS",
+    Curta: "MOSTRA CENAS CURTAS",
+    Rua: "MOSTRA RUA",
+    Estudantil: "MOSTRA ESTUDANTIL",
+    Rodada: "RODADA DE NEGÓCIOS",
+    Encerramento: "ENCERRAMENTO",
+};
+
+// Função auxiliar para traduzir o tipo (com fallback para o valor original)
+function formatType(type?: string): string {
+    if (!type) return "";
+    
+    // Normalização para tentar encontrar no mapa mesmo que haja pequenas divergências de caixa
+    const foundKey = (Object.keys(TYPE_LABELS) as PieceType[]).find(
+        (key) => key.toLowerCase() === type.toLowerCase().trim()
+    );
+
+    return foundKey ? TYPE_LABELS[foundKey] : type;
+}
 
 interface ScheduleBoardProps {
     pieces: Piece[];
@@ -28,10 +49,10 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
     const [selectedType, setSelectedType] = useState<string>("Todos");
     const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
 
-    // Mapeia categorias/tipos únicos
+    // Mapeia categorias/tipos únicos já formatados para a exibição no filtro
     const availableTypes = useMemo(() => {
-        const types = Array.from(new Set(pieces.map((p) => p.type).filter(Boolean)));
-        return ["Todos", ...types];
+        const rawTypes = Array.from(new Set(pieces.map((p) => formatType(p.type)).filter(Boolean)));
+        return ["Todos", ...rawTypes];
     }, [pieces]);
 
     // Garante data selecionada válida
@@ -45,7 +66,8 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
     const filteredPieces = useMemo(() => {
         return pieces.filter((piece) => {
             const matchDate = String(piece.data || "Geral") === selectedDate;
-            const matchType = selectedType === "Todos" || piece.type === selectedType;
+            const translatedType = formatType(piece.type);
+            const matchType = selectedType === "Todos" || translatedType === selectedType || piece.type === selectedType;
             return matchDate && matchType;
         });
     }, [pieces, selectedDate, selectedType]);
@@ -62,8 +84,9 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
     if (dates.length === 0) return null;
 
     return (
-        <section className="w-full py-12 px-4 text-white"
-        style={{ backgroundImage: `url('${template}')` }}
+        <section 
+            className="w-full py-12 px-4 text-white"
+            style={{ backgroundImage: `url('${template}')` }}
         >
             <div className="max-w-7xl mx-auto w-full">
                 
@@ -77,10 +100,10 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
                     </p>
                 </div>
 
-                {/* AREA DE NAVEGAÇÃO DE DIAS + FILTRO */}
+                {/* ÁREA DE NAVEGAÇÃO DE DIAS + FILTRO */}
                 <div className="mb-8">
                     
-                    {/* 1. CARROSSEL DE DIAS (LARGURA TOTAL / SEM OBSTÁCULOS) */}
+                    {/* 1. CARROSSEL DE DIAS */}
                     <div className="flex items-center gap-2.5 overflow-x-auto pb-3 pt-2 px-1 no-scrollbar scroll-smooth w-full border-b border-white/10">
                         {dates.map((date) => {
                             const isSelected = selectedDate === date;
@@ -112,7 +135,7 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
                         })}
                     </div>
 
-                    {/* 2. SUB-BARRA: BOTÃO DE FILTRO PEQUENO E DISCRETO (ABAIXO DA ROLAGEM) */}
+                    {/* 2. SUB-BARRA DE FILTRO */}
                     <div className="flex items-center justify-between mt-3 px-1">
                         <span className="text-xs text-gray-400">
                             Exibindo atrações do dia <strong className="text-white">{selectedDate}</strong>
@@ -197,7 +220,7 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
                             >
                                 <CardContent className="p-0 flex flex-col md:flex-row items-stretch min-h-[260px]">
                                     
-                                    {/* Imagem com corte perfeito */}
+                                    {/* Imagem */}
                                     <div className="w-full md:w-2/5 min-h-[240px] md:min-h-full relative overflow-hidden shrink-0 bg-black/40">
                                         {piece.image ? (
                                             <img
@@ -220,14 +243,14 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
                                             <div className="flex flex-wrap items-center gap-3 mb-4">
                                                 {piece.time && (
                                                     <Badge className="bg-[var(--amarelo-ouro)] text-black hover:bg-[var(--amarelo-ouro)] font-bold text-sm px-3 py-1">
-                                                        <Clock className="w-4 h-4 mr-1.5 inline-block" />
-                                                        {piece.time}
+                                                        <Clock className="w-4 h-4 mr-1 inline-block" />
+                                                        {piece.time}h
                                                     </Badge>
                                                 )}
 
                                                 {piece.type && (
-                                                    <Badge variant="outline" className="text-white border-white/30 font-medium text-sm px-3 py-1">
-                                                        {piece.type}
+                                                    <Badge variant="outline" className="text-white border-white/30 font-medium text-sm px-3 py-1 uppercase">
+                                                        {formatType(piece.type)}
                                                     </Badge>
                                                 )}
 
