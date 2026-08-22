@@ -20,12 +20,40 @@ const TYPE_LABELS: Record<PieceType, string> = {
 function formatType(type?: string): string {
     if (!type) return "";
     
-    // Normalização para tentar encontrar no mapa mesmo que haja pequenas divergências de caixa
     const foundKey = (Object.keys(TYPE_LABELS) as PieceType[]).find(
         (key) => key.toLowerCase() === type.toLowerCase().trim()
     );
 
     return foundKey ? TYPE_LABELS[foundKey] : type;
+}
+
+// Mini-componente para controlar o limite no mobile e texto livre no PC
+function DescriptionText({ text }: { text?: string }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    if (!text) return null;
+
+    return (
+        <div className="mb-6">
+            <p
+                className={`text-gray-300 text-base leading-relaxed transition-all ${
+                    isExpanded ? "line-clamp-none" : "line-clamp-3 md:line-clamp-none"
+                }`}
+            >
+                {text}
+            </p>
+            
+            {/* Botão sutil "Ler mais", visível APENAS no mobile quando o texto passar de 120 caracteres */}
+            {text.length > 120 && (
+                <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="md:hidden mt-2 text-xs font-semibold text-[var(--bege-claro)] hover:text-white underline underline-offset-4 flex items-center gap-1 cursor-pointer transition-colors"
+                >
+                    {isExpanded ? "Ler menos" : "Ler mais"}
+                </button>
+            )}
+        </div>
+    );
 }
 
 interface ScheduleBoardProps {
@@ -282,21 +310,10 @@ export function ScheduleBoard({ pieces, onSelectPiece }: ScheduleBoardProps) {
                                                 </p>
                                             )}
 
-                                            {/* Descrição */}
-                                            <p className="text-gray-300 text-base leading-relaxed line-clamp-3 mb-6">
-                                                {piece.description}
-                                            </p>
+                                            {/* Descrição com suporte a expansão mobile / texto completo desktop */}
+                                            <DescriptionText text={piece.description} />
                                         </div>
 
-                                        {/* Botão Saiba mais */}
-                                        <div className="pt-2">
-                                            <Button 
-                                                onClick={() => onSelectPiece?.(piece)}
-                                                className="w-full md:w-auto bg-[var(--rosa-coral)] hover:bg-[var(--rosa-coral)]/90 text-white font-semibold px-8 py-5 text-base rounded-lg shadow-lg transition-all cursor-pointer"
-                                            >
-                                                Saiba mais
-                                            </Button>
-                                        </div>
 
                                     </div>
 
